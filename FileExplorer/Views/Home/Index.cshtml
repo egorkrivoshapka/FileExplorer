@@ -1,0 +1,28 @@
+﻿
+<!DOCTYPE html>
+<html ng-app="testApp">
+<head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    <title ng-bind="helloAlexandr"></title>
+</head>
+<body ng-controller="TestController">
+    <div><a ng-click="getParentDirectory(currentDir)">Current directory : {{ currentDir}}</a></div>
+    
+    <div class="sub-directories">
+        <div class="sub-directory" ng-repeat="dir in directories.Sub">
+            <a ng-click="getSubDirectories(dir)">{{dir}}</a>
+        </div>
+    </div>
+
+    <div class="sub-files">
+        <div class="sub-file" ng-repeat="file in directories.Files">
+            <a>{{file.Name}}</a>
+        </div>
+    </div>
+    
+
+</body>
+</html>
+
