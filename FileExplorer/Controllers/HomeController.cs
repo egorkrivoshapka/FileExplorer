@@ -94,9 +94,9 @@ namespace FileExplorer.Controllers
             {
                 GetBranchFiles(directory, files);
                 SizeModel sModel = new SizeModel();
-                sModel.Smallest = files.Where(f => f.Lenght < 1024 * 10).Count();
-                sModel.Middle = files.Where(f => f.Lenght > 1024 * 10 && f.Lenght < 1024 * 50).Count();
-                sModel.Biggest = files.Where(f => f.Lenght > 1024 * 100).Count();
+                sModel.Smallest = files.Where(f => f.Lenght <= 1024 * 10).Count();
+                sModel.Middle = files.Where(f => f.Lenght > 1024 * 10 && f.Lenght <= 1024 * 50).Count();
+                sModel.Biggest = files.Where(f => f.Lenght >= 1024 * 100).Count();
                 return Json(sModel, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
