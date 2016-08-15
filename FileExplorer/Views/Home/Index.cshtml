@@ -8,15 +8,32 @@
     <title ng-bind="helloAlexandr"></title>
 </head>
 <body ng-controller="TestController">
-    <div><a ng-click="getParentDirectory(currentDir)">Current directory : {{ currentDir}}</a></div>
+
+    <table>
+        <tr>
+            <th>Less 10 MB</th>
+            <th>10-50 MB</th>
+            <th>More 100 MB</th>
+        </tr>
+        <tr>
+            <th>{{Smallest}}</th>
+            <th>{{Middle}}</th>
+            <th>{{Biggest}}</th>
+        </tr>
+    </table>
     
     <div class="sub-directories">
+        <div class="sub-directories-header">
+            <p class="section-title" ng-click="getParentDirectory(currentDir)">Directory : {{currentDir}}</p>
+            <div class="title-back"><a class="title-back-a" href="" ng-click="getParentDirectory(currentDir)">&#8592</a></div>
+        </div>
         <div class="sub-directory" ng-repeat="dir in directories.Sub">
-            <a ng-click="getSubDirectories(dir)">{{dir}}</a>
+            <a href="" ng-click="getSubDirectories(dir)">{{dir}}</a>
         </div>
     </div>
 
     <div class="sub-files">
+        <p class="section-title">Files : </p>
         <div class="sub-file" ng-repeat="file in directories.Files">
             <a>{{file.Name}}</a>
         </div>

@@ -1,4 +1,5 @@
-﻿// Define the `phonecatApp` module
+﻿
+// Define the `phonecatApp` module
 var testApp = angular.module('testApp', []);
 
 // Define the `PhoneListController` controller on the `phonecatApp` module
@@ -7,6 +8,7 @@ testApp.controller('TestController', function TestController($scope, $http, ApiC
     {
         $scope.directories = result;
         $scope.currentDir = result.Root;
+        $scope.countSizes(result.Root);
     });
 
     $scope.getSubDirectories = function (dir)
@@ -15,6 +17,7 @@ testApp.controller('TestController', function TestController($scope, $http, ApiC
         {
             $scope.directories = result;
             $scope.currentDir = result.Current;
+            $scope.countSizes(result.Current);
         })
     };
 
@@ -22,6 +25,15 @@ testApp.controller('TestController', function TestController($scope, $http, ApiC
         ApiCall.GetApiCall("Home", "GetParentDirectory", { directory: dir }, (result) => {
             $scope.directories = result;
             $scope.currentDir = result.Current;
+            $scope.countSizes(result.Current);
+        })
+    };
+
+    $scope.countSizes = function (dir) {
+        ApiCall.GetApiCall("Home", "CountSizes", { directory: dir }, (result) => {
+            $scope.Smallest = result.Smallest;
+            $scope.Middle = result.Middle;
+            $scope.Biggest = result.Biggest;
         })
     };
 

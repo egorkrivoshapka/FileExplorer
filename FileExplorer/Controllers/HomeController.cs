@@ -86,5 +86,39 @@ namespace FileExplorer.Controllers
             }
         }
 
+        public JsonResult CountSizes(string directory)
+        {
+            SizeModel m = new SizeModel();
+            List<FileModel> files = new List<FileModel>();
+            try
+            {
+                GetBranchFiles(directory, files);
+                SizeModel sModel = new SizeModel();
+                sModel.Smallest = files.Where(f => f.Lenght < 1024 * 10).Count();
+                sModel.Middle = files.Where(f => f.Lenght > 1024 * 10 && f.Lenght < 1024 * 50).Count();
+                sModel.Biggest = files.Where(f => f.Lenght > 1024 * 100).Count();
+                return Json(sModel, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new DirectoryModel() { Current = e.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public void GetBranchFiles(string dir, List<FileModel> files)
+        {
+            try
+            {
+                Directory.GetFiles(dir).ToList()
+                    .ForEach(f => files.Add(new FileModel( new FileInfo(f))));
+                Directory.GetDirectories(dir).ToList()
+                    .ForEach(d => GetBranchFiles(d, files));
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

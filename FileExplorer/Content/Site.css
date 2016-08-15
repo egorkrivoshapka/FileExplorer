@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
+    padding-left:20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,6 +22,9 @@ textarea {
     display:inline-block;
     padding:10px;
     vertical-align:top;
+    height:500px;
+    min-width:300px;
+    overflow-y:scroll;
 }
 
 .sub-files{
@@ -28,4 +32,46 @@ textarea {
     display:inline-block;
     padding:10px;
     vertical-align:top;
+    height:500px;
+    width:250px;
+    overflow-y:scroll;
+
+    
+}
+
+.section-title{
+}
+
+.sub-directories-header{
+    /*position: fixed;
+    background-color:azure;
+    width:auto;*/
+}
+
+a.sub-directory{
+    
+}
+.title-back{
+    margin-bottom:10px;
+}
+
+.title-back-a{
+    text-decoration:none;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+    margin-bottom:10px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

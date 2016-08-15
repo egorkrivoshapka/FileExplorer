@@ -34,4 +34,13 @@ namespace FileExplorer.Models
             Files = new List<FileModel>();
         }
     }
+
+    public class SizeModel
+    {
+        public int Smallest { get; set; }
+        public int Middle  { get; set; }
+        public int Biggest { get; set; }
+        
+
+    }
 }
